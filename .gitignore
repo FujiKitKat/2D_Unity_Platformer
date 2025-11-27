@@ -1,0 +1,25 @@
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+UserSettings/
+
+# Rider / VS / VS Code
+.vs/
+.idea/
+*.csproj
+*.sln
+*.user
+*.userprefs
+*.unityproj
+
+# Разное мусорное
+*.tmp
+*.pidb
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
