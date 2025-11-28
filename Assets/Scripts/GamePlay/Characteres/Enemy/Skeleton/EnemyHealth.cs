@@ -5,14 +5,14 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 {
     [SerializeField] private int health;
     [SerializeField] private float timeBeforeDestroy;
-    [SerializeField] private Animator animator;
+    private Animator _animator;
 
     public bool isDead { get; private set; }
 
 
 private void Awake()
     {
-        animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
     }
 
 public void TakeDamage(int damage)
@@ -28,7 +28,7 @@ public void TakeDamage(int damage)
         if (health <= 0)
         {
             isDead = true;
-            animator.SetTrigger("Death");
+            _animator.SetTrigger("Death");
             Destroy(gameObject, timeBeforeDestroy);
         }
     }

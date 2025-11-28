@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 518558713}
     m_Modifications:
+    - target: {fileID: 1868835846291755521, guid: 7431c2a8c8828bc4e978528a6810d109, type: 3}
+      propertyPath: health
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5709910184101655303, guid: 7431c2a8c8828bc4e978528a6810d109, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30.84
@@ -6516,6 +6520,14 @@ PrefabInstance:
     - target: {fileID: 3440869345954834527, guid: d2dfffa543bb8224fb8e3fa0076bedb4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931766177538885844, guid: d2dfffa543bb8224fb8e3fa0076bedb4, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 535176189}
+    - target: {fileID: 3931766177538885844, guid: d2dfffa543bb8224fb8e3fa0076bedb4, type: 3}
+      propertyPath: detectionRadius
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7351987511041346022, guid: d2dfffa543bb8224fb8e3fa0076bedb4, type: 3}
       propertyPath: 'patrolPoints.Array.data[0]'

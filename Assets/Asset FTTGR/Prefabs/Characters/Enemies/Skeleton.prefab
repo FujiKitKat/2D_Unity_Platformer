@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7351987511041346022}
   - component: {fileID: 8512875813412920819}
   - component: {fileID: 2168489373556302555}
+  - component: {fileID: 3931766177538885844}
   m_Layer: 6
   m_Name: Skeleton
   m_TagString: Untagged
@@ -222,6 +223,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   enemyHealth: {fileID: 0}
+  _detection: {fileID: 0}
 --- !u!114 &8512875813412920819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,3 +337,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3931766177538885844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3440869345954834524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a9726beb6d83c34fac775ae5f8aa50d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 10
+  player: {fileID: 0}

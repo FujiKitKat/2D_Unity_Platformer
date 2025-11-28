@@ -2,17 +2,13 @@ using UnityEngine;
 
 public abstract class EnemyMovementBase : MonoBehaviour
 {
-
-    
-    [SerializeField] protected float stopDistance;
     [SerializeField] protected float movementSpeed;
     [SerializeField] protected Transform[] patrolPoints;
-    protected int currentPoint = 0;
-    protected Transform Player;
+    protected int CurrentPoint = 0;
     protected bool FacingRight = true;
     
     public abstract void Patrol();
-    public abstract void ChasePlayer();
+    public abstract void ChasePlayer(Transform player);
 
     
     protected void Flip(float direction)
