@@ -1,16 +1,23 @@
 using UnityEngine;
 
-public class WolfDetection : MonoBehaviour
+public class WolfDetection : EnemyDetectionBase
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    private bool _prevInRange;
 
-    // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
+
+        if (!_prevInRange && IsPlayerInRange)
+        {
+            Debug.Log("Wolf: player entered detection radius");
+        }
         
+        else if (_prevInRange && !IsPlayerInRange)
+        {
+            Debug.Log("Wolf: player left detection radius");
+        }
+        
+        _prevInRange  = IsPlayerInRange;
     }
 }

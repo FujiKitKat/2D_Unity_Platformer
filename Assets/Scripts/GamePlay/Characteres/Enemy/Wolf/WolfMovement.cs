@@ -1,16 +1,72 @@
 using UnityEngine;
 
-public class WolfMovement : MonoBehaviour
+public class WolfMovement : EnemyMovementBase
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private Animator _animator;
+    private Rigidbody2D _rb;
+    public EnemyHealth enemyHealth;
+    
+    [SerializeField] private EnemyDetectionBase  _detection;
+
+    private void Awake()
     {
-        
+        _animator = GetComponent<Animator>();
+        _rb  = GetComponent<Rigidbody2D>();
+        enemyHealth = GetComponent<EnemyHealth>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
+        if (enemyHealth != null && enemyHealth.isDead)
+        {
+            return;
+        }
+
+        if (_detection != null && _detection.IsPlayerInRange && _detection.Player != null)
+        {
+            ChasePlayer(_detection.Player);
+        }
+        else
+        {
+            Patrol();
+        }
+    }
+    public override void Patrol()
+    {
+        Transform target = patrolPoints[CurrentPoint];
+        float _detection = target.position.x - _rb.position.x;
+        Flip(_detection);
         
+        _rb.MovePosition(Vector2.MoveTowards(transform.position, 
+            target.position, 
+            movementSpeed * Time.deltaTime));
+        
+        _animator.SetFloat("WolfRun", Mathf.Abs(_detection));
+
+        if (Vector2.Distance(transform.position, target.position) < 0.1f)
+        {
+            CurrentPoint++;
+            if (CurrentPoint == patrolPoints.Length)
+            {
+                CurrentPoint = 0;
+            }
+        }
+    }
+
+    public override void ChasePlayer(Transform player)
+    {
+        if (player != null && _rb != null)
+        {
+            Vector2 toPlayer = (Vector2)player.position - _rb.position;
+            float dirX = toPlayer.x;
+            Flip(dirX);
+
+            Vector2 direction = toPlayer.normalized;
+            float speed = movementSpeed * Time.deltaTime;
+            Vector2 newPosition = direction * speed;
+            _rb.MovePosition(newPosition * Time.deltaTime);
+            
+            _animator.SetFloat("WolfRun", Mathf.Abs(dirX));
+        }
     }
 }

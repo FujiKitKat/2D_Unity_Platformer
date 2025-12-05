@@ -33,10 +33,8 @@ public abstract class EnemyDetectionBase : MonoBehaviour
         }
         
         float distance = Vector2.Distance(transform.position, player.position);
-
-        bool wasInRange = _isPlayerInRange;
-        _isPlayerInRange = distance <= detectionRadius;
         
+        _isPlayerInRange = distance <= detectionRadius;
     }
 
     protected virtual void OnDrawGizmosSelected()

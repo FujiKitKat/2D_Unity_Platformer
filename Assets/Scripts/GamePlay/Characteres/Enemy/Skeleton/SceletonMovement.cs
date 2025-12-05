@@ -68,7 +68,7 @@ public class SceletonMovement : EnemyMovementBase
             Flip(dirX);
             
             Vector2 direction = toPlayer.normalized;
-            float step =  movementSpeed * Time.fixedDeltaTime;
+            float step = movementSpeed * Time.fixedDeltaTime;
             Vector2 newPosition = _rb.position + direction * step;
             _rb.MovePosition(newPosition);
             

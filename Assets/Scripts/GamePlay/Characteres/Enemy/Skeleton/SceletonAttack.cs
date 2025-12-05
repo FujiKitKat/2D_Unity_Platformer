@@ -1,16 +1,38 @@
+using System;
 using UnityEngine;
 
-public class SceletonAttack : MonoBehaviour
+public class SceletonAttack : EnemyAttackBase
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private Animator _animator;
+
+    protected override void Awake()
     {
-        
+        base.Awake();
+        _animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (player == null) return;
+
+        float distanceToPlayer = Vector2.Distance(player.transform.position, transform.position);
+
+        if (distanceToPlayer <= attackRadius && Time.time >= nextTimeAttack)
+        {
+            AttackAnimation();
+            nextTimeAttack = Time.time + attackCoolDown;
+
+        }
+
+    }
+
+    public override void AttackAnimation()
+    {
+        _animator.SetTrigger("Attack"); 
+    }
+    
+    protected override void OnPunchHit()
+    {
+        base.OnPunchHit();
     }
 }
