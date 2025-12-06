@@ -3,7 +3,6 @@ using UnityEngine;
 public class EnemyAudio : MonoBehaviour
 {
     [SerializeField]protected AudioSource audioSource;
-    
     [SerializeField]protected AudioClip stepClip;
     [SerializeField]protected AudioClip deathClip;
     [SerializeField]protected AudioClip damageClip;
